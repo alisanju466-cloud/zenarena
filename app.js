@@ -30,7 +30,7 @@ function toast(message){
 }
 // DEMO ONLY: change this password before testing. Frontend passwords are visible
 // to anyone who inspects app.js; real security requires backend authentication.
-const ADMIN_PASSWORD = "CHANGE-ME-TO-A-PRIVATE-PASSWORD";
+const ADMIN_PASSWORD = "BSDK";
 let adminAuthenticated = sessionStorage.getItem("zenox_admin_session") === "yes";
 
 function updateAdminGate(){
