@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0d">
+  <meta name="description" content="ZENOX ESPORTS — Free Fire custom rooms, tournaments, match updates and player rankings.">
+  <title>ZENOX ESPORTS | Free Fire Tournaments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="ZENOX ESPORTS home">
+      <span class="brand-mark">Z<span>X</span></span>
+      <span class="brand-copy"><strong>ZENOX</strong><small>ESPORTS</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <button class="nav-link active" data-page="home">Home</button>
+      <button class="nav-link" data-page="tournaments">Tournaments</button>
+      <button class="nav-link" data-page="live">Live games <i class="live-dot"></i></button>
+      <button class="nav-link" data-page="leaderboard">Leaderboard</button>
+      <button class="nav-link" data-page="admin">Admin</button>
+    </nav>
+    <div class="top-actions">
+      <button class="wallet-pill" data-page="wallet"><span class="wallet-icon">◆</span><span><small>DEMO POINTS</small><b id="topPoints">0</b></span></button>
+      <button class="avatar-button" data-page="profile" aria-label="Open profile">ZX</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button data-page="home">Home</button><button data-page="tournaments">Tournaments</button>
+    <button data-page="live">Live games</button><button data-page="leaderboard">Leaderboard</button><button data-page="admin">Admin</button>
+    <button data-page="wallet">Points</button><button data-page="profile">Profile</button><button data-page="support">Support</button>
+  </div>
+
+  <main class="shell">
+    <section class="page active" id="page-home">
+      <section class="hero">
+        <div class="hero-content">
+          <div class="eyebrow"><span class="eyebrow-line"></span> THE NEXT ROUND STARTS HERE</div>
+          <h1>ENTER THE<br><span> BATTLE.</span></h1>
+          <p class="hero-text">Find your squad. Join custom rooms. Make every match count.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-page="tournaments">Explore tournaments <span>↗</span></button>
+            <button class="btn btn-ghost" data-page="leaderboard">View rankings</button>
+          </div>
+          <div class="hero-stats">
+            <div><b>07</b><small>GAME MODES</small></div><div><b>24/7</b><small>COMMUNITY</small></div><div><b>GG</b><small>PLAY FAIR</small></div>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Abstract red esports artwork">
+          <div class="art-ring ring-one"></div><div class="art-ring ring-two"></div>
+          <div class="art-slash"></div><div class="art-z">Z<span>X</span></div>
+          <div class="art-label">ZENOX<br><b>ESPORTS</b></div>
+          <div class="art-number">01<span>/07</span></div>
+        </div>
+        <div class="hero-bottom"><span>FREE FIRE CUSTOMS</span><span>EST. MMXXVI</span><span>PLAY • COMPETE • IMPROVE</span></div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading"><div><div class="eyebrow">QUICK ACCESS</div><h2>CHOOSE YOUR <span>MODE</span></h2></div><button class="text-link" data-page="tournaments">All tournaments ↗</button></div>
+        <div class="mode-grid" id="modeGrid"></div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading"><div><div class="eyebrow">DON'T MISS OUT</div><h2>FEATURED <span>MATCHES</span></h2></div><div class="heading-note"><i class="live-dot"></i> UPDATED DEMO DATA</div></div>
+        <div class="tournament-grid" id="featuredGrid"></div>
+      </section>
+
+      <section class="section-block lower-grid">
+        <div class="panel announcement-panel"><div class="panel-top"><span class="eyebrow">LATEST UPDATE</span><span class="tag tag-red">NOTICE</span></div><h3>WELCOME TO<br>ZENOX ESPORTS</h3><p>Check match details before joining. Follow room rules, respect every player and keep the competition fair.</p><button class="text-link" data-page="support">Need help? Contact support ↗</button></div>
+        <div class="panel mini-leaderboard"><div class="panel-top"><span class="eyebrow">TOP PLAYERS</span><button class="text-link" data-page="leaderboard">View all ↗</button></div><div id="homeLeaders"></div></div>
+      </section>
+    </section>
+
+    <section class="page" id="page-tournaments">
+      <div class="page-header"><div><div class="eyebrow">FIND YOUR NEXT MATCH</div><h1>TOURNAMENTS<span>.</span></h1><p>Browse tournaments published manually by the ZENOX organizer.</p></div><div class="header-emblem">ZX</div></div>
+      <div class="filter-row" id="tournamentFilters"><button class="filter active" data-filter="All">All modes</button></div>
+      <div class="tournament-grid" id="allTournamentGrid"></div>
+    </section>
+
+    <section class="page" id="page-live">
+      <div class="page-header"><div><div class="eyebrow"><i class="live-dot"></i> MATCH CENTER</div><h1>LIVE GAMES<span>.</span></h1><p>Follow matches after the organizer publishes and updates them.</p></div><div class="header-emblem">LIVE</div></div>
+      <div class="filter-row"><span class="heading-note">LIVE MATCHES & RECENT RESULTS</span></div>
+      <div class="tournament-grid" id="liveGrid"></div>
+    </section>
+
+    <section class="page" id="page-leaderboard">
+      <div class="page-header"><div><div class="eyebrow">THE COMMUNITY RANKINGS</div><h1>LEADERBOARD<span>.</span></h1><p>Rankings appear after the organizer records verified results. No sample players are preloaded.</p></div><div class="header-emblem">TOP</div></div>
+      <div class="panel table-panel"><div class="table-head"><span>RANK / PLAYER</span><span>MATCHES</span><span>WINS</span><span>POINTS</span></div><div id="leaderRows"></div></div>
+    </section>
+
+    <section class="page" id="page-wallet">
+      <div class="page-header"><div><div class="eyebrow">YOUR ACCOUNT</div><h1>POINTS CENTER<span>.</span></h1><p>Practice points only — no cash value and no deposits or withdrawals.</p></div><div class="header-emblem">◆</div></div>
+      <div class="wallet-layout">
+        <div class="balance-card"><span class="eyebrow">AVAILABLE POINTS</span><div class="balance-number" id="walletPoints">0</div><div class="balance-caption">NON-CASH DEMO CREDITS</div><div class="balance-line"></div><p>All accounts start at zero. Submit a points adjustment request and the organizer can review it in the admin panel. This prototype does not process money.</p></div>
+        <div class="panel">
+          <div class="eyebrow">MANUAL ACCOUNT REQUEST</div><h3 class="panel-title">REQUEST POINTS</h3>
+          <form class="support-form" id="pointsRequestForm">
+            <label>Request type<select id="pointsRequestType"><option value="Add points">Add points</option><option value="Remove points">Remove points</option></select></label>
+            <label>Points amount<input id="pointsRequestAmount" type="number" min="1" max="100000" required placeholder="Enter points amount"></label>
+            <label>Note (optional)<textarea id="pointsRequestNote" rows="3" maxlength="180" placeholder="Add a short note"></textarea></label>
+            <button class="btn btn-primary" type="submit">Send request ↗</button>
+          </form>
+          <p class="form-note">This sends a non-cash points request into this browser's demo admin queue. No payment or withdrawal is processed.</p>
+        </div>
+      </div>
+      <div class="panel" style="margin-top:15px"><div class="eyebrow">ACCOUNT ACTIVITY</div><h3 class="panel-title">MY REQUESTS</h3><div id="transactions" class="transactions"></div></div>
+    </section>
+
+    <section class="page" id="page-profile">
+      <div class="page-header"><div><div class="eyebrow">PLAYER AREA</div><h1>MY PROFILE<span>.</span></h1><p>Your player identity, tournament registrations and match overview.</p></div><div class="header-emblem">ZX</div></div>
+      <div class="profile-layout">
+        <div class="panel profile-card"><div class="profile-avatar">ZX</div><span class="tag tag-red">COMMUNITY PLAYER</span><h2 id="profileName">ZENOX PLAYER</h2><p class="muted">Player ID: <span id="playerId">ZX-2048</span></p><button class="btn btn-ghost btn-small" id="editProfile">Edit display name</button></div>
+        <div class="profile-main"><div class="profile-stats"><div class="stat-card"><small>PLAYED</small><b>12</b></div><div class="stat-card"><small>WINS</small><b>08</b></div><div class="stat-card"><small>WIN RATE</small><b>66%</b></div></div><div class="panel"><div class="eyebrow">RECENT MATCHES</div><h3 class="panel-title">MATCH HISTORY</h3><div class="history-row"><span class="mode-icon">⚔</span><span><b>CS 2v2</b><small>Yesterday · Custom room</small></span><strong class="result-win">WIN</strong></div><div class="history-row"><span class="mode-icon">◎</span><span><b>Lone Wolf</b><small>2 days ago · Custom room</small></span><strong class="result-loss">LOSS</strong></div><div class="history-row"><span class="mode-icon">⌖</span><span><b>Battle Royale</b><small>4 days ago · Squad</small></span><strong class="result-win">WIN</strong></div></div></div>
+      </div>
+    </section>
+
+
+    <section class="page" id="page-admin">
+      <div class="page-header"><div><div class="eyebrow">ORGANIZER CONTROL CENTER</div><h1>ADMIN PANEL<span>.</span></h1><p>Manually publish games and manage demo registrations on this browser.</p></div><div class="header-emblem">ADM</div></div>
+      <div class="admin-layout">
+        <form class="panel support-form" id="createTournamentForm">
+          <div class="eyebrow">CREATE A HIDDEN DRAFT</div><h3 class="panel-title">CREATE TOURNAMENT</h3>
+          <label>Tournament name<input id="newGameName" required maxlength="50" placeholder="e.g. Friday CS Clash"></label>
+          <label>Game mode<select id="newGameMode"><option>Lone Wolf</option><option>Craftland</option><option>Battle Royale</option><option>CS 1v1</option><option>CS 2v2</option><option>CS 4v4</option><option>CS 1v4</option></select></label>
+          <label>Maximum players<input id="newGameSlots" type="number" min="2" max="100" value="16" required></label>
+          <label>Schedule<input id="newGameTime" required maxlength="40" placeholder="e.g. Friday · 6:30 PM"></label>
+          <button class="btn btn-primary" type="submit">Save hidden tournament ↗</button>
+          <p class="form-note">Frontend prototype only. This admin screen is not password-protected; do not publish sensitive admin controls until a secure backend is added.</p>
+        </form>
+        <div class="panel"><div class="eyebrow">ORGANIZER CONTROLS</div><h3 class="panel-title">TOURNAMENT CONTROL</h3><div id="adminGames" class="transactions"><div class="empty-state">No tournaments created yet.</div></div></div>
+      </div>
+      <div class="panel admin-results"><div class="eyebrow">POINT REQUEST QUEUE</div><h3 class="panel-title">REVIEW REQUESTS</h3><div id="pointRequests" class="transactions"></div></div>
+      <div class="panel admin-results"><div class="eyebrow">RESULT MANAGEMENT</div><h3 class="panel-title">PLAYER RESULTS</h3><p class="form-note">Record results only after checking the match. Results affect the local demo leaderboard.</p><div id="resultManager" class="transactions"></div><button class="btn btn-ghost btn-small" id="refreshLeaderboard">Refresh leaderboard ↻</button></div>
+    </section>
+
+    <section class="page" id="page-support">
+      <div class="page-header"><div><div class="eyebrow">WE'RE HERE TO HELP</div><h1>SUPPORT<span>.</span></h1><p>Send a message about the demo website or a match issue.</p></div><div class="header-emblem">?</div></div>
+      <div class="support-layout"><form class="panel support-form" id="supportForm"><label>Your name<input id="supportName" required maxlength="40" placeholder="Enter your name"></label><label>Topic<select id="supportTopic"><option>Match query</option><option>Account help</option><option>Report a player</option><option>Website feedback</option></select></label><label>Message<textarea id="supportMessage" required maxlength="600" rows="5" placeholder="Tell us how we can help..."></textarea></label><button class="btn btn-primary" type="submit">Submit demo ticket ↗</button><p class="form-note">Demo only: this form displays a confirmation in your browser and does not send data to a support team.</p></form><div class="panel faq"><div class="eyebrow">QUICK ANSWERS</div><h3 class="panel-title">FAQ</h3><details><summary>How do I join a tournament?</summary><p>Open Tournaments, choose a mode and review the match details. The current site is a frontend demo.</p></details><details><summary>Where are room ID and password?</summary><p>Room details would be published by an authorized organizer after a match is confirmed.</p></details><details><summary>Are wallet points real money?</summary><p>No. All points in this prototype are fictional demo points with no cash or prize value.</p></details><details><summary>How do I report a problem?</summary><p>Use the demo support form and include the match mode and a clear description.</p></details></div></div>
+    </section>
+  </main>
+
+  <footer class="footer"><a class="brand footer-brand" href="#home"><span class="brand-mark">Z<span>X</span></span><span class="brand-copy"><strong>ZENOX</strong><small>ESPORTS</small></span></a><p>Built for the community. Play fair. Respect the game.</p><span>© 2026 ZENOX ESPORTS · COMMUNITY DEMO</span></footer>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
