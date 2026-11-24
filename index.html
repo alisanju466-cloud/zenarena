@@ -35,7 +35,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <button data-page="home">Home</button><button data-page="tournaments">Tournaments</button>
     <button data-page="live">Live games</button><button data-page="leaderboard">Leaderboard</button><button data-page="admin">Admin</button>
-    <button data-page="wallet">Demo wallet</button><button data-page="profile">Profile</button><button data-page="support">Support</button>
+    <button data-page="wallet">Points</button><button data-page="profile">Profile</button><button data-page="support">Support</button>
   </div>
 
   <main class="shell">
@@ -91,16 +91,26 @@
     </section>
 
     <section class="page" id="page-leaderboard">
-      <div class="page-header"><div><div class="eyebrow">THE COMMUNITY RANKINGS</div><h1>LEADERBOARD<span>.</span></h1><p>Rankings update when the organizer records verified match results.</p></div><div class="header-emblem">TOP</div></div>
+      <div class="page-header"><div><div class="eyebrow">THE COMMUNITY RANKINGS</div><h1>LEADERBOARD<span>.</span></h1><p>Rankings appear after the organizer records verified results. No sample players are preloaded.</p></div><div class="header-emblem">TOP</div></div>
       <div class="panel table-panel"><div class="table-head"><span>RANK / PLAYER</span><span>MATCHES</span><span>WINS</span><span>POINTS</span></div><div id="leaderRows"></div></div>
     </section>
 
     <section class="page" id="page-wallet">
-      <div class="page-header"><div><div class="eyebrow">YOUR ACCOUNT</div><h1>DEMO WALLET<span>.</span></h1><p>Practice points only — no cash value and no deposits or withdrawals.</p></div><div class="header-emblem">◆</div></div>
+      <div class="page-header"><div><div class="eyebrow">YOUR ACCOUNT</div><h1>POINTS CENTER<span>.</span></h1><p>Practice points only — no cash value and no deposits or withdrawals.</p></div><div class="header-emblem">◆</div></div>
       <div class="wallet-layout">
-        <div class="balance-card"><span class="eyebrow">AVAILABLE DEMO POINTS</span><div class="balance-number" id="walletPoints">0</div><div class="balance-caption">ZENOX COMMUNITY POINTS</div><div class="balance-line"></div><p>Every new player starts at 0 points. Points are non-cash community scores only. There are no cash deposits, withdrawals, paid entries or money transfers.</p></div>
-        <div class="panel"><div class="eyebrow">POINT ACTIVITY</div><h3 class="panel-title">RECENT ACTIVITY</h3><div id="transactions" class="transactions"></div></div>
+        <div class="balance-card"><span class="eyebrow">AVAILABLE POINTS</span><div class="balance-number" id="walletPoints">0</div><div class="balance-caption">NON-CASH DEMO CREDITS</div><div class="balance-line"></div><p>All accounts start at zero. Submit a points adjustment request and the organizer can review it in the admin panel. This prototype does not process money.</p></div>
+        <div class="panel">
+          <div class="eyebrow">MANUAL ACCOUNT REQUEST</div><h3 class="panel-title">REQUEST POINTS</h3>
+          <form class="support-form" id="pointsRequestForm">
+            <label>Request type<select id="pointsRequestType"><option value="Add points">Add points</option><option value="Remove points">Remove points</option></select></label>
+            <label>Points amount<input id="pointsRequestAmount" type="number" min="1" max="100000" required placeholder="Enter points amount"></label>
+            <label>Note (optional)<textarea id="pointsRequestNote" rows="3" maxlength="180" placeholder="Add a short note"></textarea></label>
+            <button class="btn btn-primary" type="submit">Send request ↗</button>
+          </form>
+          <p class="form-note">This sends a non-cash points request into this browser's demo admin queue. No payment or withdrawal is processed.</p>
+        </div>
       </div>
+      <div class="panel" style="margin-top:15px"><div class="eyebrow">ACCOUNT ACTIVITY</div><h3 class="panel-title">MY REQUESTS</h3><div id="transactions" class="transactions"></div></div>
     </section>
 
     <section class="page" id="page-profile">
@@ -116,16 +126,17 @@
       <div class="page-header"><div><div class="eyebrow">ORGANIZER CONTROL CENTER</div><h1>ADMIN PANEL<span>.</span></h1><p>Manually publish games and manage demo registrations on this browser.</p></div><div class="header-emblem">ADM</div></div>
       <div class="admin-layout">
         <form class="panel support-form" id="createTournamentForm">
-          <div class="eyebrow">PUBLISH A MATCH</div><h3 class="panel-title">CREATE TOURNAMENT</h3>
+          <div class="eyebrow">CREATE A HIDDEN DRAFT</div><h3 class="panel-title">CREATE TOURNAMENT</h3>
           <label>Tournament name<input id="newGameName" required maxlength="50" placeholder="e.g. Friday CS Clash"></label>
           <label>Game mode<select id="newGameMode"><option>Lone Wolf</option><option>Craftland</option><option>Battle Royale</option><option>CS 1v1</option><option>CS 2v2</option><option>CS 4v4</option><option>CS 1v4</option></select></label>
           <label>Maximum players<input id="newGameSlots" type="number" min="2" max="100" value="16" required></label>
           <label>Schedule<input id="newGameTime" required maxlength="40" placeholder="e.g. Friday · 6:30 PM"></label>
-          <button class="btn btn-primary" type="submit">Publish tournament ↗</button>
+          <button class="btn btn-primary" type="submit">Save hidden tournament ↗</button>
           <p class="form-note">Frontend prototype only. This admin screen is not password-protected; do not publish sensitive admin controls until a secure backend is added.</p>
         </form>
-        <div class="panel"><div class="eyebrow">MANAGE PUBLISHED MATCHES</div><h3 class="panel-title">TOURNAMENT CONTROL</h3><div id="adminGames" class="transactions"><div class="empty-state">No tournaments published yet. Create one to get started.</div></div></div>
+        <div class="panel"><div class="eyebrow">ORGANIZER CONTROLS</div><h3 class="panel-title">TOURNAMENT CONTROL</h3><div id="adminGames" class="transactions"><div class="empty-state">No tournaments created yet.</div></div></div>
       </div>
+      <div class="panel admin-results"><div class="eyebrow">POINT REQUEST QUEUE</div><h3 class="panel-title">REVIEW REQUESTS</h3><div id="pointRequests" class="transactions"></div></div>
       <div class="panel admin-results"><div class="eyebrow">RESULT MANAGEMENT</div><h3 class="panel-title">PLAYER RESULTS</h3><p class="form-note">Record results only after checking the match. Results affect the local demo leaderboard.</p><div id="resultManager" class="transactions"></div><button class="btn btn-ghost btn-small" id="refreshLeaderboard">Refresh leaderboard ↻</button></div>
     </section>
 

@@ -4,3 +4,6 @@
 
 .admin-layout{display:grid;grid-template-columns:1fr 1fr;gap:15px}.admin-results{margin-top:15px}.admin-game-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #292930}.admin-game-row:last-child{border:0}.admin-game-row b{font-size:10px}.admin-game-row small{display:block;color:#777;font-size:9px;margin-top:4px}.admin-game-row select{background:#0c0c10;color:#eee;border:1px solid #383840;border-radius:4px;padding:8px;font-size:9px}
 @media(max-width:650px){.admin-layout{grid-template-columns:1fr}}
+
+.admin-actions{display:flex;gap:6px;align-items:center}.card-join:disabled{opacity:.45;cursor:not-allowed}.card-join.danger{border-color:#59202a;background:#241015;color:#ff7784}
+@media(max-width:650px){.admin-actions{flex-wrap:wrap;justify-content:flex-end}.admin-game-row{align-items:flex-start}}
